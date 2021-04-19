@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.Service.ServiceFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <com.qdjiaotong.yujiabao.baseview.ServiceButton
+                android:id="@+id/sbPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:service_left_img="@mipmap/help_feedback"
+                app:service_msg_text="4001191213"
+                app:service_title_text="电话客服" />
+
+            <com.qdjiaotong.yujiabao.baseview.ServiceButton
+                android:id="@+id/sbFanKui"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/sbPhone"
+                app:service_left_img="@mipmap/help_phone_service"
+                app:service_msg_text=""
+                app:service_title_text="意见反馈" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="使用指南" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/service_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

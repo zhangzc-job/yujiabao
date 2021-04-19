@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_home"
+        android:icon="@mipmap/home_main_nor"
+        android:title="@string/home_home" />
+
+    <item
+        android:id="@+id/home_service"
+        android:icon="@mipmap/home_service_nor"
+        android:title="@string/home_service" />
+
+    <item
+        android:id="@+id/home_message"
+        android:icon="@mipmap/home_msg_nor"
+        android:title="@string/home_message" />
+
+    <item
+        android:id="@+id/home_center"
+        android:icon="@mipmap/home_center_nor"
+        android:title="@string/home_center" />
+
+</menu>
