@@ -21,12 +21,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
-            android:name=".webview.WebViewActivity"
+            android:name="com.qdjiaotong.yujiabao.activity.web_activity.webview.WebViewActivity"
             android:label="@string/title_activity_web_view" />
 
-        <activity android:name=".mytangkou.MyTangKouActivity" />
+        <activity android:name="com.qdjiaotong.yujiabao.activity.mytangkou.MyTangKouActivity" />
         <activity android:name=".MainActivity">
 
         </activity>

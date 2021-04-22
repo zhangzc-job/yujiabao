@@ -1,8 +1,6 @@
-package com.qdjiaotong.yujiabao.mytangkou
+package com.qdjiaotong.yujiabao.activity.mytangkou
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.paging.PagedList
 
 class TangKouViewModel : ViewModel() {
 

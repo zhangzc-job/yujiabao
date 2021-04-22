@@ -6,6 +6,7 @@ import android.content.Context
 class YuJiaBaoApplication : Application() {
 
     companion object {
+        const val TOKEN = "mmmmmmmmmmmmmm"
         lateinit var context: Context
     }
 

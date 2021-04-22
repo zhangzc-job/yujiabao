@@ -6,13 +6,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.qdjiaotong.yujiabao.databinding.FragmentHomeBinding
-import com.qdjiaotong.yujiabao.mytangkou.MyTangKouActivity
-import com.qdjiaotong.yujiabao.webview.WebViewActivity
+import com.qdjiaotong.yujiabao.activity.mytangkou.MyTangKouActivity
+import com.qdjiaotong.yujiabao.activity.web_activity.webview.WebViewActivity
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer

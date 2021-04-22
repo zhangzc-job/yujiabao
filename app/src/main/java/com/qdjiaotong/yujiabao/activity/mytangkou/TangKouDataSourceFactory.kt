@@ -1,4 +1,4 @@
-package com.qdjiaotong.yujiabao.mytangkou
+package com.qdjiaotong.yujiabao.activity.mytangkou
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource

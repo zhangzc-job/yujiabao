@@ -1,8 +1,6 @@
 package com.qdjiaotong.yujiabao.model
 
-class User(__ajax: Boolean,username:String,password:String) {
-
-
+class User(val __ajax: Boolean, val username: String, val password: String) {
 
 
 }

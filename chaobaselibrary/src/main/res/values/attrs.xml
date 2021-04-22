@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ServiceButton">
+        <attr name="service_left_img" format="reference" />
+        <attr name="service_title_text" format="string" />
+        <attr name="service_msg_text" format="string" />
+        <attr name="service_right_img" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="meItem">
+        <attr name="me_item_image" format="reference"/>
+        <attr name="me_item_title" format="string"/>
+    </declare-styleable>
+
+</resources>
