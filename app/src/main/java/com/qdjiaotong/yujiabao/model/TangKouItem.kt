@@ -1,4 +1,4 @@
-package com.qdjiaotong.yujiabao.activity.mytangkou
+package com.qdjiaotong.yujiabao.model
 
 import java.util.*
 

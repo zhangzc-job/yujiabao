@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.qdjiaotong.yujiabao.R
+import com.qdjiaotong.yujiabao.model.TangKouItem
 
 
 class TangKouAdapter(val tangkouItems: List<TangKouItem>) :
@@ -30,7 +31,7 @@ class TangKouAdapter(val tangkouItems: List<TangKouItem>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val tangkou = tangkouItems[position]
         holder.nameTv.text = tangkou.name
-        holder.numberTv.text = tangkou.number
-        holder.addressTv.text = tangkou.address
+        holder.numberTv.text = "塘口编号：${tangkou.number}"
+        holder.addressTv.text = "地址：${tangkou.address}"
     }
 }

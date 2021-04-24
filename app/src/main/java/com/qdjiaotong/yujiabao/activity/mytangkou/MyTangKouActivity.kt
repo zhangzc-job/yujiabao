@@ -1,38 +1,39 @@
 package com.qdjiaotong.yujiabao.activity.mytangkou
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.qdjiaotong.yujiabao.R
+import com.qdjiaotong.yujiabao.BaseActivity
+import com.qdjiaotong.yujiabao.databinding.ActivityMyTangKouBinding
+import com.qdjiaotong.yujiabao.model.TangKouItem
 
-class MyTangKouActivity : AppCompatActivity() {
+class MyTangKouActivity : BaseActivity() {
 
+    lateinit var binding: ActivityMyTangKouBinding
+    lateinit var viewModel: TangKouViewModel
 
     val tangKouList = ArrayList<TangKouItem>()
-    lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_tang_kou)
-        initTangkou()
+
+        binding = ActivityMyTangKouBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        viewModel = ViewModelProvider(this).get(TangKouViewModel::class.java)
+
         val layoutManager = LinearLayoutManager(this)
-        recyclerView = findViewById(R.id.tangKouRv)
-
-        recyclerView.layoutManager = layoutManager
+        binding.tangKouRv.layoutManager = layoutManager
         val adapter = TangKouAdapter(tangKouList)
-        recyclerView.adapter = adapter
-    }
+        binding.tangKouRv.adapter = adapter
 
+        viewModel.tankous.observe(this, Observer<List<TangKouItem>> {
+            tangKouList.addAll(it)
+            adapter.notifyDataSetChanged()
+        })
 
-    private fun initTangkou() {
-        repeat(2) {
-            tangKouList.add(TangKouItem("2012", "99999999999999", "北京大城市"))
-            tangKouList.add(TangKouItem("2012", "dddddddd99", "北京大城市"))
-            tangKouList.add(TangKouItem("2012", "999966666666999999", "北京大城市"))
-            tangKouList.add(TangKouItem("2012", "333333333339999999", "北京大城市"))
-            tangKouList.add(TangKouItem("2012", "2222222222999999", "北京大城市"))
-        }
+        viewModel.getListItems()
     }
 
 
