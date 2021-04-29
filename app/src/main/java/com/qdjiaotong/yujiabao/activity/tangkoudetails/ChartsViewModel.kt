@@ -1,44 +1,35 @@
-package com.qdjiaotong.yujiabao.activity.mytangkou
+package com.qdjiaotong.yujiabao.activity.tangkoudetails
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.qdjiaotong.yujiabao.YuJiaBaoApplication
 import com.qdjiaotong.yujiabao.api.RetrofitClient
-import com.qdjiaotong.yujiabao.model.TangKouItem
+import com.qdjiaotong.yujiabao.model.ChartsItem
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class TangKouViewModel : ViewModel() {
+class ChartsViewModel : ViewModel() {
 
-    val tankous = MutableLiveData<List<TangKouItem>>()
+    val charts = MutableLiveData<ChartsItem>()
 
-//    val tangKouList:LiveData<PagedList<TangKouItem>>= TangKou
-
-    fun getListItems() {
-
-
-        var tangKouList: ArrayList<TangKouItem>
-
+    fun getDetails(fishpondId: String) {
         val map = HashMap<String, String>()
         map["__sid"] = YuJiaBaoApplication.TOKEN
-        RetrofitClient.instance?.api?.tangKouList(map)?.enqueue(object :
+        map["fishpondId"] = fishpondId
+//        map["fishpondid"]="1376125636512940032"
+        map["type"] = "h6"
+        RetrofitClient.instance?.api?.chartsDetails(map)?.enqueue(object :
             Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 val ddd = response.body()?.string();
                 Log.i("dddddddddcccccddddd", ddd + "")
-
-                val gson = Gson()
-                val typeOf = object : TypeToken<List<TangKouItem>>() {}.type
-
-                val list = gson.fromJson<List<TangKouItem>>(ddd, typeOf)
-
-                tankous.value = list
-
+                val c = Gson().fromJson<ChartsItem>(ddd, ChartsItem::class.java)
+                Log.i("dddddddddd", c.toString())
+                charts.value = c
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
@@ -46,7 +37,7 @@ class TangKouViewModel : ViewModel() {
             }
 
         })
-    }
 
+    }
 
 }

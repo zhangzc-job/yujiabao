@@ -13,13 +13,13 @@ class TangKouDataSource() : ItemKeyedDataSource<Date, TangKouItem>() {
         params: LoadInitialParams<Date>,
         callback: LoadInitialCallback<TangKouItem>
     ) {
-        val items=fetchItems(params.requestedInitialKey,params.requestedLoadSize)
-        callback.onResult(items)
+//        val items=fetchItems(params.requestedInitialKey,params.requestedLoadSize)
+//        callback.onResult(items)
     }
 
     override fun loadAfter(params: LoadParams<Date>, callback: LoadCallback<TangKouItem>) {
-        val items=fetchItems(params.key,params.requestedLoadSize)
-        callback.onResult(items)
+//        val items=fetchItems(params.key,params.requestedLoadSize)
+//        callback.onResult(items)
     }
 
     override fun loadBefore(params: LoadParams<Date>, callback: LoadCallback<TangKouItem>) {
@@ -30,14 +30,14 @@ class TangKouDataSource() : ItemKeyedDataSource<Date, TangKouItem>() {
     }
 
 
-    fun fetchItems(key:Date?,size:Int):List<TangKouItem>{
-        var items=ArrayList<TangKouItem>()
-        items.add(TangKouItem())
-        items.add(TangKouItem())
-        items.add(TangKouItem())
-        items.add(TangKouItem())
-        items.add(TangKouItem())
-        return items
-
-    }
+//    fun fetchItems(key:Date?,size:Int):List<TangKouItem>{
+//        var items=ArrayList<TangKouItem>()
+//        items.add(TangKouItem())
+//        items.add(TangKouItem())
+//        items.add(TangKouItem())
+//        items.add(TangKouItem())
+//        items.add(TangKouItem())
+//        return items
+//
+//    }
 }

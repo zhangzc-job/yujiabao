@@ -3,30 +3,15 @@ package com.qdjiaotong.yujiabao.activity.login.ui
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.gson.Gson
 import com.qdjiaotong.yujiabao.BaseActivity
 import com.qdjiaotong.yujiabao.MainActivity
 import com.qdjiaotong.yujiabao.YuJiaBaoApplication
 import com.qdjiaotong.yujiabao.api.ApiService
-import com.qdjiaotong.yujiabao.api.RetrofitClient
 import com.qdjiaotong.yujiabao.databinding.ActivityLoginBinding
-import com.qdjiaotong.yujiabao.model.UserData
 import com.zzc.chaobaselibrary.kotlinding.showToast
 import com.zzc.chaobaselibrary.utils.Base64Utils
-import okhttp3.FormBody
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.ResponseBody
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.concurrent.thread
 
 class LoginActivity : BaseActivity() {
 
@@ -56,7 +41,7 @@ class LoginActivity : BaseActivity() {
 
 
         viewModel.userData.observe(this, Observer { userData ->
-            if (userData.result) {
+            if (userData.result.equals("true")) {
                 userData.message.showToast(YuJiaBaoApplication.context)
                 YuJiaBaoApplication.TOKEN = userData.sessionid
                 startActivity(Intent(this@LoginActivity, MainActivity::class.java))

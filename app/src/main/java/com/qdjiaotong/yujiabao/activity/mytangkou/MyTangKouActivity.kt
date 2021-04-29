@@ -33,6 +33,7 @@ class MyTangKouActivity : BaseActivity() {
             adapter.notifyDataSetChanged()
         })
 
+
         viewModel.getListItems()
     }
 
