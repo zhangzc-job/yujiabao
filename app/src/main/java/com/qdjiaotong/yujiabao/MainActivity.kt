@@ -1,27 +1,25 @@
 package com.qdjiaotong.yujiabao
 
 import android.os.Bundle
+import android.view.View
 import com.qdjiaotong.yujiabao.databinding.ActivityMainBinding
 import com.qdjiaotong.yujiabao.fragment.home.HomeFragment
 import com.qdjiaotong.yujiabao.fragment.me.MeFragment
 import com.qdjiaotong.yujiabao.fragment.message.MessageFragment
 import com.qdjiaotong.yujiabao.fragment.Service.ServiceFragment
+import com.zzc.chaobaselibrary.base.ZBaseActivity
 
-class MainActivity : BaseActivity() {
+class MainActivity : ZBaseActivity() {
 
-    lateinit var binding: ActivityMainBinding
+    lateinit var mBinding: ActivityMainBinding
 
     lateinit var homeFragment: HomeFragment
     lateinit var meFragment: MeFragment
     lateinit var messageFragment: MessageFragment
     lateinit var serviceFragment: ServiceFragment
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+    override fun initView() {
+        mBinding = ActivityMainBinding.inflate(layoutInflater)
 
         homeFragment = HomeFragment()
         meFragment = MeFragment()
@@ -30,14 +28,18 @@ class MainActivity : BaseActivity() {
         serviceFragment =
             ServiceFragment()
 
-        initBottomNavigation()
 
         supportFragmentManager.beginTransaction().replace(R.id.home_frame,homeFragment).commit()
+
+
     }
 
-    private fun initBottomNavigation() {
+    override fun getLayoutView(): View {
+        return mBinding.root
+    }
 
-        binding.bnvMenu.setOnNavigationItemSelectedListener() {
+    override fun initListener() {
+        mBinding.bnvMenu.setOnNavigationItemSelectedListener() {
             when (it.itemId) {
                 R.id.home_home -> {
                     supportFragmentManager.beginTransaction().replace(R.id.home_frame, homeFragment)
@@ -64,7 +66,7 @@ class MainActivity : BaseActivity() {
             false
 
         }
-
-
     }
+
+
 }

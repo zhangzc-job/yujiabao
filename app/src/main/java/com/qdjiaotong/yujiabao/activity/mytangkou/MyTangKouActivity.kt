@@ -1,34 +1,54 @@
 package com.qdjiaotong.yujiabao.activity.mytangkou
 
 import android.os.Bundle
+import android.os.Handler
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.qdjiaotong.yujiabao.BaseActivity
+import com.qdjiaotong.yujiabao.R
 import com.qdjiaotong.yujiabao.databinding.ActivityMyTangKouBinding
 import com.qdjiaotong.yujiabao.model.TangKouItem
+import com.zzc.chaobaselibrary.base.ZBaseActivity
 
-class MyTangKouActivity : BaseActivity() {
+class MyTangKouActivity : ZBaseActivity() {
 
-    lateinit var binding: ActivityMyTangKouBinding
+    lateinit var bindingT: ActivityMyTangKouBinding
     lateinit var viewModel: TangKouViewModel
 
     val tangKouList = ArrayList<TangKouItem>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun getLayoutView(): View {
+        return bindingT.root
+    }
 
-        binding = ActivityMyTangKouBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun initListener() {
 
+    }
+
+    override fun initView() {
+//        rv=findViewById(R.id.tangKouRv)
+        bindingT = ActivityMyTangKouBinding.inflate(layoutInflater)
+        showProgressView()
+        Handler().postDelayed({
+            getData()
+        }, 2000)
+    }
+
+    fun getData() {
         viewModel = ViewModelProvider(this).get(TangKouViewModel::class.java)
 
         val layoutManager = LinearLayoutManager(this)
-        binding.tangKouRv.layoutManager = layoutManager
+        bindingT.tangKouRv.layoutManager = layoutManager
+//        rv.layoutManager=layoutManager
         val adapter = TangKouAdapter(tangKouList)
-        binding.tangKouRv.adapter = adapter
+        bindingT.tangKouRv.adapter = adapter
+//        rv.adapter=adapter
 
         viewModel.tankous.observe(this, Observer<List<TangKouItem>> {
+            showContentView()
             tangKouList.addAll(it)
             adapter.notifyDataSetChanged()
         })

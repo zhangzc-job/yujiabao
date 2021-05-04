@@ -18,6 +18,7 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import com.qdjiaotong.yujiabao.BaseActivity
 import com.qdjiaotong.yujiabao.databinding.ActivityChartsBinding
 import com.qdjiaotong.yujiabao.model.ChartsItem
+import com.zzc.chaobaselibrary.kotlinding.showToast
 import java.util.*
 
 class ChartsActivity : BaseActivity() {
@@ -44,7 +45,11 @@ class ChartsActivity : BaseActivity() {
 //        chart.setOnChartValueSelectedListener(this)
 
         viewModel.charts.observe(this, androidx.lifecycle.Observer<ChartsItem> {
-            showData(it)
+            if (it.seriesData.isNotEmpty() && it.xData.isNotEmpty()) {
+                showData(it)
+            } else {
+                "暂无数据".showToast(this)
+            }
         })
 
         viewModel.getDetails(id)
@@ -52,9 +57,9 @@ class ChartsActivity : BaseActivity() {
 
     fun showData(item: ChartsItem) {
 
-        val xData=item.xData
-        val d1=item.seriesData[0].data
-        val d2=item.seriesData[1].data
+        val xData = item.xData
+        val d1 = item.seriesData[0].data
+        val d2 = item.seriesData[1].data
 
         // no description text
         chart.description.isEnabled = false
@@ -102,21 +107,21 @@ class ChartsActivity : BaseActivity() {
         //        l.setYOffset(11f);
         val xAxis = chart.xAxis
 //        xAxis.typeface = tfLight
-        xAxis.position=XAxis.XAxisPosition.BOTTOM
+        xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.textSize = 11f
-        xAxis.granularity=1f
-        xAxis.isGranularityEnabled=true
+        xAxis.granularity = 1f
+        xAxis.isGranularityEnabled = true
         xAxis.textColor = Color.BLACK
         xAxis.setDrawGridLines(false)
         xAxis.setDrawAxisLine(false)
-        xAxis.labelRotationAngle=15f
-        xAxis.valueFormatter=object : ValueFormatter() {
+        xAxis.labelRotationAngle = 15f
+        xAxis.valueFormatter = object : ValueFormatter() {
 
             override fun getAxisLabel(value: Float, axis: AxisBase?): String {
 
                 Log.i("ddddddd", value.toString())
 
-                return "       "+xData[value.toInt()]+"             "
+                return "       " + xData[value.toInt()] + "             "
             }
 
         }
@@ -126,7 +131,7 @@ class ChartsActivity : BaseActivity() {
 //        leftAxis.typeface = tfLight
         leftAxis.textColor = ColorTemplate.getHoloBlue()
         leftAxis.axisMaximum = 100f
-        leftAxis.axisMinimum =-30f
+        leftAxis.axisMinimum = -30f
         leftAxis.setDrawGridLines(true)
         leftAxis.isGranularityEnabled = true
 
@@ -139,18 +144,18 @@ class ChartsActivity : BaseActivity() {
         rightAxis.setDrawZeroLine(false)
         rightAxis.isGranularityEnabled = false
 
-        setData(5, 30.toFloat(),d1,d2)
+        setData(5, 30.toFloat(), d1, d2)
 
 //        chart.invalidate()
 
     }
 
-    private fun setData(count: Int, range: Float,d1:List<Float>,d2:List<Float>) {
+    private fun setData(count: Int, range: Float, d1: List<Float>, d2: List<Float>) {
         val values1 = ArrayList<Entry>()
 //        for (i in 0 until count) {
         for (i in d1.indices) {
 //            val `val` = (Math.random() * (range / 2f)).toFloat() + 50
-            val `val` = d1[i] + 50+Math.random()
+            val `val` = d1[i] + 50 + Math.random()
             values1.add(Entry(i.toFloat(), `val`.toFloat()))
         }
         val values2 = ArrayList<Entry>()
