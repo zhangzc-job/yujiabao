@@ -2,6 +2,9 @@ package com.qdjiaotong.yujiabao
 
 import android.app.Application
 import android.content.Context
+import android.widget.Toast
+import com.tencent.mmkv.MMKV
+import com.zzc.chaobaselibrary.kotlinding.showToast
 
 class YuJiaBaoApplication : Application() {
 
@@ -14,6 +17,9 @@ class YuJiaBaoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
+
+        val rootDir= MMKV.initialize(this)
+        rootDir.showToast(context)
     }
 
 

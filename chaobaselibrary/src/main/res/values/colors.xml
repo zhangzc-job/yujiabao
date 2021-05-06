@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#FFFFFFFF</color>
+    <color name="blank">#ff000000</color>
     <color name="theme_color">#87ceeb</color>
+    <color name="trans">#00ffffff</color>
 </resources>

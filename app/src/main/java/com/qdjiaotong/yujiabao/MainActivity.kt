@@ -2,6 +2,7 @@ package com.qdjiaotong.yujiabao
 
 import android.os.Bundle
 import android.view.View
+import com.gyf.immersionbar.ktx.immersionBar
 import com.qdjiaotong.yujiabao.databinding.ActivityMainBinding
 import com.qdjiaotong.yujiabao.fragment.home.HomeFragment
 import com.qdjiaotong.yujiabao.fragment.me.MeFragment
@@ -28,6 +29,10 @@ class MainActivity : ZBaseActivity() {
         serviceFragment =
             ServiceFragment()
 
+//        immersionBar {
+//            statusBarColor(R.color.blank)
+//            fitsSystemWindows(true)
+//        }
 
         supportFragmentManager.beginTransaction().replace(R.id.home_frame,homeFragment).commit()
 
