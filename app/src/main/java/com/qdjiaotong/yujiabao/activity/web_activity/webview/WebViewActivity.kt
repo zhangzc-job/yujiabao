@@ -18,6 +18,7 @@ class WebViewActivity : BaseActivity() {
 
         binding.webView.settings.javaScriptEnabled = true
         binding.webView.webViewClient = WebViewClient()
-        binding.webView.loadUrl("https://baidu.com")
+//        binding.webView.loadUrl("https://baidu.com")
+        binding.webView.loadUrl("http://tags.news.sina.com.cn/渔民")
     }
 }

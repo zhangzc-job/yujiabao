@@ -3,6 +3,7 @@ package com.qdjiaotong.yujiabao.activity.tangkoudetails
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.AxisBase
@@ -18,31 +19,31 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import com.qdjiaotong.yujiabao.BaseActivity
 import com.qdjiaotong.yujiabao.databinding.ActivityChartsBinding
 import com.qdjiaotong.yujiabao.model.ChartsItem
+import com.zzc.chaobaselibrary.base.ZBaseActivity
 import com.zzc.chaobaselibrary.kotlinding.showToast
 import java.util.*
 
-class ChartsActivity : BaseActivity() {
+class ChartsActivity : ZBaseActivity() {
 
 
     lateinit var viewModel: ChartsViewModel
-
-    lateinit var binding: ActivityChartsBinding
+    lateinit var cBinding: ActivityChartsBinding
     lateinit var chart: LineChart
-
     var id: String = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityChartsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+    override fun initView() {
+        cBinding = ActivityChartsBinding.inflate(layoutInflater)
         id = intent.getStringExtra("id").toString()
-
         viewModel = ViewModelProvider(this).get(ChartsViewModel::class.java)
+        chart = cBinding.chart1
 
-        chart = binding.chart1
-        // no description text
-//        chart.setOnChartValueSelectedListener(this)
+    }
+
+    override fun getLayoutView(): View {
+        return cBinding.root
+    }
+
+    override fun initListener() {
 
         viewModel.charts.observe(this, androidx.lifecycle.Observer<ChartsItem> {
             if (it.seriesData.isNotEmpty() && it.xData.isNotEmpty()) {
@@ -61,39 +62,21 @@ class ChartsActivity : BaseActivity() {
         val d1 = item.seriesData[0].data
         val d2 = item.seriesData[1].data
 
-        // no description text
         chart.description.isEnabled = false
-
-        // enable touch gestures
-
-        // enable touch gestures
         chart.setTouchEnabled(true)
 
         chart.dragDecelerationFrictionCoef = 1f
-
-        // enable scaling and dragging
-
-        // enable scaling and dragging
         chart.isDragEnabled = true
         chart.setScaleEnabled(true)
         chart.setDrawGridBackground(false)
         chart.isHighlightPerDragEnabled = true
-
         // if disabled, scaling can be done on x- and y-axis separately
         chart.setPinchZoom(true)
-
         // set an alternative background color
         chart.setBackgroundColor(Color.WHITE)
-
-
         chart.animateX(1500)
-
         // get the legend (only possible after setting data)  获取图例（仅在设置数据后才可能）
         val l = chart.legend
-
-        // modify the legend ...
-
-        // modify the legend ...
         l.form = LegendForm.LINE
 //        l.typeface = tfLight
         l.textSize = 11f
@@ -103,8 +86,6 @@ class ChartsActivity : BaseActivity() {
         l.orientation = Legend.LegendOrientation.HORIZONTAL
         l.setDrawInside(false)
 //        l.setYOffset(11f);
-
-        //        l.setYOffset(11f);
         val xAxis = chart.xAxis
 //        xAxis.typeface = tfLight
         xAxis.position = XAxis.XAxisPosition.BOTTOM
@@ -116,16 +97,11 @@ class ChartsActivity : BaseActivity() {
         xAxis.setDrawAxisLine(false)
         xAxis.labelRotationAngle = 15f
         xAxis.valueFormatter = object : ValueFormatter() {
-
             override fun getAxisLabel(value: Float, axis: AxisBase?): String {
-
                 Log.i("ddddddd", value.toString())
-
                 return "       " + xData[value.toInt()] + "             "
             }
-
         }
-
 
         val leftAxis = chart.axisLeft
 //        leftAxis.typeface = tfLight
@@ -145,7 +121,6 @@ class ChartsActivity : BaseActivity() {
         rightAxis.isGranularityEnabled = false
 
         setData(5, 30.toFloat(), d1, d2)
-
 //        chart.invalidate()
 
     }
@@ -235,4 +210,5 @@ class ChartsActivity : BaseActivity() {
             chart.data = data
         }
     }
+
 }

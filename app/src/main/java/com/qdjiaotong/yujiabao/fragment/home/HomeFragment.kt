@@ -40,9 +40,9 @@ class HomeFragment : Fragment(),View.OnClickListener{
         var list_title: ArrayList<String>? = null
 
         //放图片地址的集合
-        list_path = ArrayList<String>()
+        list_path = ArrayList()
         //放标题的集合
-        list_title = ArrayList<String>()
+        list_title = ArrayList()
 
 
         list_path.add("http://ww4.sinaimg.cn/large/006uZZy8jw1faic21363tj30ci08ct96.jpg");
