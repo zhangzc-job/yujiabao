@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isInvisible
 import com.zzc.chaobaselibrary.R
 import com.zzc.chaobaselibrary.databinding.ViewBaseStateLayoutBinding
 
@@ -26,6 +27,7 @@ abstract class ZBaseActivity : AppCompatActivity() {
         initBaseListener()
 
 
+
     }
 
     fun initTitleBar(isShow: Boolean, title: String) {
@@ -39,6 +41,14 @@ abstract class ZBaseActivity : AppCompatActivity() {
 
     fun showProgressView() {
         showView(R.id.base_view_progress)
+    }
+
+    fun showLoadingDialog(){
+        binding.loadingDialog.visibility=View.VISIBLE
+    }
+
+    fun disLoadingDialog(){
+        binding.loadingDialog.visibility=View.GONE
     }
 
     fun showContentView() {

@@ -11,9 +11,9 @@
         android:layout_height="44dp"
         android:background="@color/theme_color"
         android:gravity="center"
+        android:text="渔家宝"
         android:textColor="#fff"
-        android:textSize="20sp"
-        android:text="渔家宝" />
+        android:textSize="20sp" />
 
     <!-- 加载进度条布局 -->
 
@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/base_title_bar"
+        android:background="@color/trans"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -61,6 +62,13 @@
             android:layout_height="wrap_content"
             android:text="暂无数据" />
     </LinearLayout>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/loading_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 
 
 </RelativeLayout>
