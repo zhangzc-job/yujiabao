@@ -42,7 +42,7 @@
 
     </LinearLayout>
 
-    <com.qdjiaotong.yujiabao.baseview.MeItemView
+    <com.zzc.chaobaselibrary.view.MeItemView
         android:id="@+id/my_tone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
         app:me_item_image="@mipmap/center_pond"
         app:me_item_title="我的池塘" />
 
-    <com.qdjiaotong.yujiabao.baseview.MeItemView
+    <com.zzc.chaobaselibrary.view.MeItemView
         android:id="@+id/my_zihao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
         app:me_item_image="@mipmap/center_subuser"
         app:me_item_title="我的子账号" />
 
-    <com.qdjiaotong.yujiabao.baseview.MeItemView
+    <com.zzc.chaobaselibrary.view.MeItemView
         android:id="@+id/my_collection"
         android:layout_marginTop="10dp"
         android:background="#fff"
@@ -69,7 +69,7 @@
         app:me_item_image="@mipmap/center_colection"
         app:me_item_title="我的收藏" />
 
-    <com.qdjiaotong.yujiabao.baseview.MeItemView
+    <com.zzc.chaobaselibrary.view.MeItemView
         android:id="@+id/my_money"
         android:layout_marginTop="1dp"
         android:background="#fff"
@@ -78,7 +78,7 @@
         app:me_item_image="@mipmap/center_money"
         app:me_item_title="基础服务费" />
 
-    <com.qdjiaotong.yujiabao.baseview.MeItemView
+    <com.zzc.chaobaselibrary.view.MeItemView
         android:id="@+id/my_set"
         android:layout_marginTop="1dp"
         android:background="#fff"
@@ -87,7 +87,7 @@
         app:me_item_image="@mipmap/center_set"
         app:me_item_title="预警信息推送号码设置" />
 
-    <com.qdjiaotong.yujiabao.baseview.MeItemView
+    <com.zzc.chaobaselibrary.view.MeItemView
         android:id="@+id/my_help"
         android:layout_marginTop="10dp"
         android:background="#fff"

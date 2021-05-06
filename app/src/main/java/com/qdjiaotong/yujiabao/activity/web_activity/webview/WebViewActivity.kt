@@ -1,9 +1,8 @@
-package com.qdjiaotong.yujiabao.webview
+package com.qdjiaotong.yujiabao.activity.web_activity.webview
 
 import android.os.Bundle
 import android.webkit.WebViewClient
 import com.qdjiaotong.yujiabao.BaseActivity
-import com.qdjiaotong.yujiabao.R
 import com.qdjiaotong.yujiabao.databinding.ActivityWebViewBinding
 
 class WebViewActivity : BaseActivity() {

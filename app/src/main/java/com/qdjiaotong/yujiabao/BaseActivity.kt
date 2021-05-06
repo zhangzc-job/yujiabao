@@ -8,7 +8,7 @@ import com.qdjiaotong.yujiabao.databinding.ActivityWebViewBinding
 
 open class BaseActivity : AppCompatActivity() {
 
-
+    //dddddd
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
