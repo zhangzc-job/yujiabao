@@ -89,13 +89,13 @@ class ChartsActivity : ZBaseActivity() {
         val xAxis = chart.xAxis
 //        xAxis.typeface = tfLight
         xAxis.position = XAxis.XAxisPosition.BOTTOM
-        xAxis.textSize = 11f
+        xAxis.textSize = 8f
         xAxis.granularity = 1f
         xAxis.isGranularityEnabled = true
         xAxis.textColor = Color.BLACK
         xAxis.setDrawGridLines(false)
         xAxis.setDrawAxisLine(false)
-        xAxis.labelRotationAngle = 15f
+        xAxis.labelRotationAngle = 10f
         xAxis.valueFormatter = object : ValueFormatter() {
             override fun getAxisLabel(value: Float, axis: AxisBase?): String {
                 Log.i("ddddddd", value.toString())
@@ -120,17 +120,17 @@ class ChartsActivity : ZBaseActivity() {
         rightAxis.setDrawZeroLine(false)
         rightAxis.isGranularityEnabled = false
 
-        setData(5, 30.toFloat(), d1, d2)
+        setData(5, 30.toFloat(), d1, d2,item.legend)
 //        chart.invalidate()
 
     }
 
-    private fun setData(count: Int, range: Float, d1: List<Float>, d2: List<Float>) {
+    private fun setData(count: Int, range: Float, d1: List<Float>, d2: List<Float>,index:List<String>) {
         val values1 = ArrayList<Entry>()
 //        for (i in 0 until count) {
         for (i in d1.indices) {
 //            val `val` = (Math.random() * (range / 2f)).toFloat() + 50
-            val `val` = d1[i] + 50 + Math.random()
+            val `val` = d1[i] + 50 + Math.random()*10
             values1.add(Entry(i.toFloat(), `val`.toFloat()))
         }
         val values2 = ArrayList<Entry>()
@@ -161,7 +161,7 @@ class ChartsActivity : ZBaseActivity() {
             chart.notifyDataSetChanged()
         } else {
             // create a dataset and give it a type
-            set1 = LineDataSet(values1, "含氧量")
+            set1 = LineDataSet(values1, index[0])
             set1.axisDependency = AxisDependency.LEFT
             set1.color = ColorTemplate.getHoloBlue()
             set1.setCircleColor(Color.BLACK)
@@ -177,7 +177,7 @@ class ChartsActivity : ZBaseActivity() {
             //set1.setCircleHoleColor(Color.WHITE);
 
             // create a dataset and give it a type
-            set2 = LineDataSet(values2, "二氧化碳")
+            set2 = LineDataSet(values2, index[1])
             set2.axisDependency = AxisDependency.RIGHT
             set2.color = Color.RED
             set2.setCircleColor(Color.BLACK)
@@ -203,7 +203,7 @@ class ChartsActivity : ZBaseActivity() {
             // create a data object with the data sets
 //            val data = LineData(set1, set2, set3)
             val data = LineData(set1, set2)
-            data.setValueTextColor(Color.WHITE)
+            data.setValueTextColor(Color.BLACK)
             data.setValueTextSize(9f)
 
             // set data

@@ -43,6 +43,6 @@ class TangKouAdapter(val tangkouItems: List<TangKouItem>) :
         val tangkou = tangkouItems[position]
         holder.nameTv.text = tangkou.yjhFishpond.name
         holder.numberTv.text = "塘口编号：${tangkou.yjhFishpond.code}"
-        holder.addressTv.text = "地址：${tangkou.yjhFishpond.createDate}"
+        holder.addressTv.text = "日期：${tangkou.yjhFishpond.createDate}"
     }
 }

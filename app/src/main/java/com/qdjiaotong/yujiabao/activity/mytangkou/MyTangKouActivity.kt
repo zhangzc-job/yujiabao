@@ -32,9 +32,7 @@ class MyTangKouActivity : ZBaseActivity() {
 //        rv=findViewById(R.id.tangKouRv)
         bindingT = ActivityMyTangKouBinding.inflate(layoutInflater)
         showProgressView()
-        Handler().postDelayed({
-            getData()
-        }, 2000)
+        getData()
     }
 
     fun getData() {
@@ -42,10 +40,8 @@ class MyTangKouActivity : ZBaseActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         bindingT.tangKouRv.layoutManager = layoutManager
-//        rv.layoutManager=layoutManager
         val adapter = TangKouAdapter(tangKouList)
         bindingT.tangKouRv.adapter = adapter
-//        rv.adapter=adapter
 
         viewModel.tankous.observe(this, Observer<List<TangKouItem>> {
             showContentView()
