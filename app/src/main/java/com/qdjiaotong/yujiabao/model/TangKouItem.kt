@@ -41,13 +41,15 @@ data class TangKouItem(
 ) {
     fun getStartTime(): Date = Date()
 
-    inner class yjhFish(
-        val id: String,
-        val createDate: String,
-        val code: String,
-        val name: String
-    ) {
 
-    }
+
+}
+
+data class yjhFish(
+    val id: String = "666",
+    val createDate: String = "777",
+    val code: String = "888",
+    val name: String = "999"
+) {
 
 }

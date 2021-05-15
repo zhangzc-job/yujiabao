@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken
 import com.qdjiaotong.yujiabao.YuJiaBaoApplication
 import com.qdjiaotong.yujiabao.api.RetrofitClient
 import com.qdjiaotong.yujiabao.model.TangKouItem
+import com.qdjiaotong.yujiabao.model.yjhFish
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,7 +36,26 @@ class TangKouViewModel : ViewModel() {
                 val gson = Gson()
                 val typeOf = object : TypeToken<List<TangKouItem>>() {}.type
 
-                val list = gson.fromJson<List<TangKouItem>>(ddd, typeOf)
+                var list = gson.fromJson<List<TangKouItem>>(ddd, typeOf)
+
+//                for (i in 0..50) {
+//                    list = arrayListOf(
+//                        TangKouItem(yjhFishpond = yjhFish()), TangKouItem(yjhFishpond = yjhFish()),
+//                        TangKouItem(yjhFishpond = yjhFish()), TangKouItem(yjhFishpond = yjhFish()),
+//                        TangKouItem(yjhFishpond = yjhFish()), TangKouItem(yjhFishpond = yjhFish()),
+//                        TangKouItem(yjhFishpond = yjhFish()), TangKouItem(yjhFishpond = yjhFish()),
+//                        TangKouItem(yjhFishpond = yjhFish()), TangKouItem(yjhFishpond = yjhFish()),
+//                        TangKouItem(yjhFishpond = yjhFish()), TangKouItem(yjhFishpond = yjhFish()),
+//                        TangKouItem(yjhFishpond = yjhFish()), TangKouItem(yjhFishpond = yjhFish()),
+//                        TangKouItem(yjhFishpond = yjhFish()), TangKouItem(yjhFishpond = yjhFish()),
+//                        TangKouItem(yjhFishpond = yjhFish()), TangKouItem(yjhFishpond = yjhFish()),
+//                        TangKouItem(yjhFishpond = yjhFish()), TangKouItem(yjhFishpond = yjhFish()),
+//                        TangKouItem(yjhFishpond = yjhFish()), TangKouItem(yjhFishpond = yjhFish()),
+//                        TangKouItem(yjhFishpond = yjhFish()), TangKouItem(yjhFishpond = yjhFish()),
+//                        TangKouItem(yjhFishpond = yjhFish()), TangKouItem(yjhFishpond = yjhFish())
+//                    )
+////                    list[2]=TangKouItem(TangKouItem.yjhFish())
+//                }
 
                 tankous.value = list
 

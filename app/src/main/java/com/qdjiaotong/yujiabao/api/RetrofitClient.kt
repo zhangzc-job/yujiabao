@@ -5,7 +5,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class RetrofitClient {
-    private val retrofit: Retrofit
+    private val retrofit: Retrofit = Retrofit.Builder().baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
     val api: ApiService
         get() = retrofit.create(ApiService::class.java)
 
@@ -23,11 +25,5 @@ class RetrofitClient {
             }
     }
 
-    init {
-
-        retrofit = Retrofit.Builder().baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
 }
 

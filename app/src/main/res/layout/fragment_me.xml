@@ -9,36 +9,38 @@
     tools:context=".fragment.me.MeFragment">
 
     <RelativeLayout
-        android:background="@mipmap/my_head_bg"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="200dp"
+        android:background="@mipmap/my_head_bg">
 
     </RelativeLayout>
 
-    <LinearLayout android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#fff"
-        android:padding="12dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="12dp">
 
 
         <ImageView
-            android:src="@mipmap/center_userclass"
             android:layout_width="30dp"
-            android:layout_height="30dp" />
+            android:layout_height="30dp"
+            android:src="@mipmap/center_userclass" />
 
         <TextView
-            android:text="账号类型"
-            android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:text="（母账号）"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:text="账号类型" />
+
+        <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="（母账号）" />
 
     </LinearLayout>
 
@@ -62,37 +64,37 @@
 
     <com.zzc.chaobaselibrary.view.MeItemView
         android:id="@+id/my_collection"
-        android:layout_marginTop="10dp"
-        android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#fff"
         app:me_item_image="@mipmap/center_colection"
         app:me_item_title="我的收藏" />
 
     <com.zzc.chaobaselibrary.view.MeItemView
         android:id="@+id/my_money"
-        android:layout_marginTop="1dp"
-        android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="#fff"
         app:me_item_image="@mipmap/center_money"
         app:me_item_title="基础服务费" />
 
     <com.zzc.chaobaselibrary.view.MeItemView
         android:id="@+id/my_set"
-        android:layout_marginTop="1dp"
-        android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="#fff"
         app:me_item_image="@mipmap/center_set"
         app:me_item_title="预警信息推送号码设置" />
 
     <com.zzc.chaobaselibrary.view.MeItemView
         android:id="@+id/my_help"
-        android:layout_marginTop="10dp"
-        android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#fff"
         app:me_item_image="@mipmap/center_help"
         app:me_item_title="帮助反馈" />
 
