@@ -21,7 +21,7 @@ class MainActivity : ZBaseActivity() {
 
     override fun initView() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
-
+        setBackIvVisible(false)
         homeFragment = HomeFragment()
         meFragment = MeFragment()
         messageFragment =

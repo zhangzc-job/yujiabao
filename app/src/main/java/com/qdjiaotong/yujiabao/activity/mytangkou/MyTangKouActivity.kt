@@ -31,11 +31,9 @@ class MyTangKouActivity : ZBaseActivity() {
     }
 
     override fun initListener() {
-
     }
 
     override fun initView() {
-//        rv=findViewById(R.id.tangKouRv)
         bindingT = ActivityMyTangKouBinding.inflate(layoutInflater)
         showProgressView()
         getData()

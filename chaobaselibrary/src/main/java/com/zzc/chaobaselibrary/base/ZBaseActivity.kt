@@ -12,9 +12,15 @@ abstract class ZBaseActivity : AppCompatActivity() {
 
     lateinit var binding: ViewBaseStateLayoutBinding
 
+    lateinit var rootViews: List<View>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ViewBaseStateLayoutBinding.inflate(layoutInflater)
+
+//        rootViews= arrayListOf(R.id.base_view_content,R.id.base_view_empty,R.id.base_view_progress)
+        rootViews =
+            arrayListOf(binding.baseViewContent, binding.baseViewEmpty, binding.baseViewProgress)
 
         setContentView(binding.root)
 
@@ -25,7 +31,6 @@ abstract class ZBaseActivity : AppCompatActivity() {
         initBaseView()
 
         initBaseListener()
-
 
 
     }
@@ -43,12 +48,12 @@ abstract class ZBaseActivity : AppCompatActivity() {
         showView(R.id.base_view_progress)
     }
 
-    fun showLoadingDialog(){
-        binding.loadingDialog.visibility=View.VISIBLE
+    fun showLoadingDialog() {
+        binding.loadingDialog.visibility = View.VISIBLE
     }
 
-    fun disLoadingDialog(){
-        binding.loadingDialog.visibility=View.GONE
+    fun disLoadingDialog() {
+        binding.loadingDialog.visibility = View.GONE
     }
 
     fun showContentView() {
@@ -70,11 +75,12 @@ abstract class ZBaseActivity : AppCompatActivity() {
     }
 
     fun showView(viewId: Int) {
-        for (i in 1 until binding.baseRootView.childCount) {
-            if (binding.baseRootView.getChildAt(i).id == viewId) {
-                binding.baseRootView.getChildAt(i).visibility = View.VISIBLE
+//        for (i in 1 until binding.baseRootView.childCount) {
+        for (i in rootViews.indices) {
+            if (rootViews[i].id == viewId) {
+                rootViews[i].visibility = View.VISIBLE
             } else {
-                binding.baseRootView.getChildAt(i).visibility = View.GONE
+                rootViews[i].visibility = View.GONE
             }
         }
     }
@@ -83,12 +89,17 @@ abstract class ZBaseActivity : AppCompatActivity() {
 
         binding.baseViewContent.addView(getLayoutView())
 
+
 //        LayoutInflater.from(this).inflate(getLayoutId(), binding.baseViewContent, true)
     }
 
-    fun initBaseListener(){
+    fun initBaseListener() {
         binding.baseViewEmpty.setOnClickListener {
             onReload()
+        }
+
+        binding.baseBackIv.setOnClickListener {
+            finish()
         }
 
         initListener()
@@ -99,13 +110,19 @@ abstract class ZBaseActivity : AppCompatActivity() {
 
     }
 
+    fun setBackIvVisible(boolean: Boolean = true) {
+        if (boolean) {
+            binding.baseBackIv.visibility = View.VISIBLE
+        } else {
+            binding.baseBackIv.visibility = View.GONE
+        }
+    }
+
     abstract fun initView()
 
     abstract fun getLayoutView(): View
 
     abstract fun initListener()
-
-
 
 
 }

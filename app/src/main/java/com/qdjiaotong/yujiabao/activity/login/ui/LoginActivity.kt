@@ -31,6 +31,7 @@ class LoginActivity : ZBaseActivity() {
 
     override fun initView() {
         cBinding = ActivityLoginBinding.inflate(layoutInflater)
+        setBackIvVisible(false)
         viewModel = ViewModelProvider(
             this,
             LoginViewModelFactory(username, password)

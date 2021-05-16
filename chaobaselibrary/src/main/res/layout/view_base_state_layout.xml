@@ -15,6 +15,14 @@
         android:textColor="#fff"
         android:textSize="20sp" />
 
+    <ImageView
+        android:id="@+id/base_back_iv"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:padding="10dp"
+        android:scaleType="center"
+        android:src="@mipmap/right" />
+
     <!-- 加载进度条布局 -->
 
     <LinearLayout
@@ -64,11 +72,11 @@
     </LinearLayout>
 
     <ProgressBar
-        android:visibility="gone"
         android:id="@+id/loading_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
 
 </RelativeLayout>
