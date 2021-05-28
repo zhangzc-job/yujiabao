@@ -22,4 +22,14 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+
+    <!-- 添加塘口-->
+    <string name="add_item_text1">养殖场名称：</string>
+    <string name="add_item_text2">塘口名称：</string>
+    <string name="add_item_text3">面积（亩）：</string>
+    <string name="add_item_text4">省/市/县：</string>
+    <string name="add_item_text5">详细地址：</string>
+    <string name="add_item_text6">上级经销商：</string>
+
 </resources>

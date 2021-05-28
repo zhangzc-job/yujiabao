@@ -9,8 +9,13 @@
     </declare-styleable>
 
     <declare-styleable name="meItem">
-        <attr name="me_item_image" format="reference"/>
-        <attr name="me_item_title" format="string"/>
+        <attr name="me_item_image" format="reference" />
+        <attr name="me_item_title" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="AddItemView">
+        <attr name="add_item_title" format="string" />
+        <attr name="add_item_can_edit" format="boolean" />
     </declare-styleable>
 
 </resources>

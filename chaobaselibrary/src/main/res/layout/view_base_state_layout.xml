@@ -17,11 +17,11 @@
 
     <ImageView
         android:id="@+id/base_back_iv"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:padding="10dp"
-        android:scaleType="center"
-        android:src="@mipmap/right" />
+        android:layout_width="12dp"
+        android:layout_height="22dp"
+        android:scaleType="centerInside"
+        android:layout_margin="11dp"
+        android:src="@mipmap/back" />
 
     <!-- 加载进度条布局 -->
 

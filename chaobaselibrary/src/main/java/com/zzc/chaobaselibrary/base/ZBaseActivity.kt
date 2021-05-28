@@ -18,19 +18,18 @@ abstract class ZBaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ViewBaseStateLayoutBinding.inflate(layoutInflater)
 
-//        rootViews= arrayListOf(R.id.base_view_content,R.id.base_view_empty,R.id.base_view_progress)
         rootViews =
             arrayListOf(binding.baseViewContent, binding.baseViewEmpty, binding.baseViewProgress)
 
         setContentView(binding.root)
 
-        showContentView()
-
         initView()
 
-        initBaseView()
+        binding.baseViewContent.addView(getLayoutView())
 
         initBaseListener()
+
+        showContentView()
 
 
     }
@@ -83,14 +82,6 @@ abstract class ZBaseActivity : AppCompatActivity() {
                 rootViews[i].visibility = View.GONE
             }
         }
-    }
-
-    fun initBaseView() {
-
-        binding.baseViewContent.addView(getLayoutView())
-
-
-//        LayoutInflater.from(this).inflate(getLayoutId(), binding.baseViewContent, true)
     }
 
     fun initBaseListener() {

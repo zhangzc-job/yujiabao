@@ -13,6 +13,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.qdjiaotong.yujiabao.BaseActivity
 import com.qdjiaotong.yujiabao.R
+import com.qdjiaotong.yujiabao.activity.addtangkou.addTangKouActivity
 import com.qdjiaotong.yujiabao.activity.tangkoudetails.ChartsActivity
 import com.qdjiaotong.yujiabao.databinding.ActivityMyTangKouBinding
 import com.qdjiaotong.yujiabao.model.TangKouItem
@@ -31,6 +32,11 @@ class MyTangKouActivity : ZBaseActivity() {
     }
 
     override fun initListener() {
+
+        bindingT.addTangKou.setOnClickListener {
+            startActivity(Intent(this, addTangKouActivity::class.java))
+        }
+
     }
 
     override fun initView() {
@@ -55,6 +61,7 @@ class MyTangKouActivity : ZBaseActivity() {
         }
 
         adapter.animationEnable = true
+        adapter.isAnimationFirstOnly = false
         adapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.SlideInLeft)
 
         viewModel.tankous.observe(this, Observer<List<TangKouItem>> {
@@ -65,7 +72,7 @@ class MyTangKouActivity : ZBaseActivity() {
             } else {
                 showContentView()
                 tangKouList.addAll(it)
-//                adapter.notifyDataSetChanged()
+                adapter.notifyDataSetChanged()
             }
         })
 
