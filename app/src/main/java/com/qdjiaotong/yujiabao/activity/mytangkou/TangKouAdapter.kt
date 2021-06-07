@@ -41,5 +41,9 @@ class TangKouAdapter(tangkouItems: MutableList<TangKouItem>) :
         holder.setText(R.id.tkNameTv, item.yjhFishpond.name)
         holder.setText(R.id.tkNumberTv, "塘口编号：${item.yjhFishpond.code}")
         holder.setText(R.id.tkAddressTv, "日期：${item.yjhFishpond.createDate}")
+
     }
+
+
+
 }

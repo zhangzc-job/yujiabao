@@ -25,7 +25,7 @@
 
 
     <!-- 添加塘口-->
-    <string name="add_item_text1">养殖场名称：</string>
+    <string name="add_item_text1">塘口编号：</string>
     <string name="add_item_text2">塘口名称：</string>
     <string name="add_item_text3">面积（亩）：</string>
     <string name="add_item_text4">省/市/县：</string>

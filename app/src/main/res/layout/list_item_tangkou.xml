@@ -32,5 +32,36 @@
         app:layout_constraintTop_toBottomOf="@id/tkNumberTv"
         tools:text="地址：中华大人人大幅度反对反对反对反对" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/tkEditBn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/theme_color"
+        android:text="编辑"
+        android:textColor="@color/white"
+        android:theme="@style/Theme.MaterialComponents.Light"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tkAddressTv" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/tkDeleteBn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:strokeWidth="0dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/hui"
+        android:text="删除"
+        android:textColor="@color/white"
+        android:theme="@style/Theme.MaterialComponents.Light"
+        app:layout_constraintRight_toLeftOf="@id/tkEditBn"
+        app:layout_constraintTop_toTopOf="@id/tkEditBn" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/blank"
+        app:layout_constraintTop_toBottomOf="@id/tkEditBn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,31 +18,59 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:add_item_can_edit="true"
-            app:add_item_title="@string/add_item_text1" />
+            app:add_item_title="@string/add_item_text2" />
 
         <com.zzc.chaobaselibrary.view.AddItemView
             android:id="@+id/add_item_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:add_item_title="@string/add_item_text2" />
+            app:add_item_can_edit="true"
+            app:add_item_title="@string/add_item_text1" />
 
-        <com.zzc.chaobaselibrary.view.AddItemView
-            android:id="@+id/add_item_3"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:add_item_title="@string/add_item_text3" />
+            android:layout_margin="20dp"
+            android:orientation="horizontal">
 
-        <com.zzc.chaobaselibrary.view.AddItemView
-            android:id="@+id/add_item_4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:add_item_title="@string/add_item_text4" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="已添加设备"
+                android:textColor="@color/blank"
+                android:textSize="16sp" />
 
-        <com.zzc.chaobaselibrary.view.AddItemView
-            android:id="@+id/add_item_5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:add_item_title="@string/add_item_text5" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mbn_add_device"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/theme_color"
+                android:text="添加设备"
+                android:textColor="@color/white"
+                android:theme="@style/Theme.MaterialComponents.Light" />
+
+        </LinearLayout>
+
+
+        <!--        <com.zzc.chaobaselibrary.view.AddItemView-->
+        <!--            android:id="@+id/add_item_3"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:add_item_title="@string/add_item_text3" />-->
+
+        <!--        <com.zzc.chaobaselibrary.view.AddItemView-->
+        <!--            android:id="@+id/add_item_4"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:add_item_title="@string/add_item_text4" />-->
+
+        <!--        <com.zzc.chaobaselibrary.view.AddItemView-->
+        <!--            android:id="@+id/add_item_5"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:add_item_title="@string/add_item_text5" />-->
 
         <Button
             android:id="@+id/add_item_bn"

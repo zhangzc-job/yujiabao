@@ -1,5 +1,6 @@
 package com.qdjiaotong.yujiabao.model
 
+import java.io.Serializable
 import java.util.*
 
 data class TangKouItemItem(
@@ -38,9 +39,8 @@ data class TangKouItem(
     val id: String = "aaa",
     val fishpondId: String = "bbbb",
     val yjhFishpond: yjhFish
-) {
+) : Serializable {
     fun getStartTime(): Date = Date()
-
 
 
 }
@@ -50,6 +50,6 @@ data class yjhFish(
     val createDate: String = "777",
     val code: String = "888",
     val name: String = "999"
-) {
+) : Serializable {
 
 }

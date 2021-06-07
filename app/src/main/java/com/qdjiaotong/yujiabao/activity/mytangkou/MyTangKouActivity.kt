@@ -1,18 +1,18 @@
 package com.qdjiaotong.yujiabao.activity.mytangkou
 
 import android.content.Intent
-import android.os.Bundle
-import android.os.Handler
+import android.util.Log
 import android.view.View
-import android.view.animation.Animation
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.listener.OnItemClickListener
-import com.qdjiaotong.yujiabao.BaseActivity
+import com.chad.library.adapter.base.listener.OnItemChildClickListener
+import com.lxj.xpopup.XPopup
+import com.lxj.xpopup.interfaces.OnCancelListener
+import com.lxj.xpopup.interfaces.OnConfirmListener
 import com.qdjiaotong.yujiabao.R
+import com.qdjiaotong.yujiabao.activity.addtangkou.AddTangKouViewModel
 import com.qdjiaotong.yujiabao.activity.addtangkou.addTangKouActivity
 import com.qdjiaotong.yujiabao.activity.tangkoudetails.ChartsActivity
 import com.qdjiaotong.yujiabao.databinding.ActivityMyTangKouBinding
@@ -37,6 +37,7 @@ class MyTangKouActivity : ZBaseActivity() {
             startActivity(Intent(this, addTangKouActivity::class.java))
         }
 
+
     }
 
     override fun initView() {
@@ -58,6 +59,34 @@ class MyTangKouActivity : ZBaseActivity() {
             val intent = Intent(this, ChartsActivity::class.java)
             intent.putExtra("id", item.fishpondId)
             startActivity(intent)
+        }
+        adapter.addChildClickViewIds(R.id.tkEditBn)
+        adapter.addChildClickViewIds(R.id.tkDeleteBn)
+        adapter.setOnItemChildClickListener { adapter, view, position ->
+
+            when(view.id){
+                R.id.tkEditBn -> {
+                    val item = tangKouList[position]
+                    val intent = Intent(this, addTangKouActivity::class.java)
+                    intent.putExtra("tt", "mmmmmmm")
+                    intent.putExtra("data",tangKouList[position])
+                    startActivity(intent)
+                }
+                R.id.tkDeleteBn -> {
+                    XPopup.Builder(this).asConfirm("提示","确定删除吗？",object : OnConfirmListener{
+                        override fun onConfirm() {
+                            viewModel.deleteItem(tangKouList[position].yjhFishpond.id)
+                        }
+
+                    },object : OnCancelListener{
+                        override fun onCancel() {
+                            "cancel".showToast(this@MyTangKouActivity)
+                        }
+
+                    }).show()
+                }
+            }
+
         }
 
         adapter.animationEnable = true
