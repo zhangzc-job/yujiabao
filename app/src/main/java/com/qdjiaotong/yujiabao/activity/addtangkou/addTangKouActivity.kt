@@ -10,6 +10,7 @@ import com.qdjiaotong.yujiabao.databinding.ActivityAddTangKouBinding
 import com.qdjiaotong.yujiabao.model.TangKouItem
 import com.zzc.chaobaselibrary.base.ZBaseActivity
 import com.zzc.chaobaselibrary.kotlinding.showToast
+import com.zzc.chaobaselibrary.view.AddDeviceDialog
 
 
 class addTangKouActivity : ZBaseActivity() {
@@ -62,6 +63,8 @@ class addTangKouActivity : ZBaseActivity() {
         cBinding.mbnAddDevice.setOnClickListener {
 
             "dddddd".showToast(this)
+
+            AddDeviceDialog.Builder(this).create()?.show()
 //            XPopup.Builder(this).asConfirm(
 //                "添加设备",
 //                null,

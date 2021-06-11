@@ -5,4 +5,5 @@
     <color name="theme_color">#87ceeb</color>
     <color name="trans">#00ffffff</color>
     <color name="hui">#8a8c8e</color>
+    <color name="transparent">#0000</color>
 </resources>
