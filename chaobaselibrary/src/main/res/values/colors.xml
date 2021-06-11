@@ -4,4 +4,5 @@
     <color name="blank">#ff000000</color>
     <color name="theme_color">#87ceeb</color>
     <color name="trans">#00ffffff</color>
+    <color name="hui">#8a8c8e</color>
 </resources>

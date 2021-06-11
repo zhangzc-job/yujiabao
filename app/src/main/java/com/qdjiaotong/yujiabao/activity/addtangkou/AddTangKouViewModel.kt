@@ -15,10 +15,10 @@ import retrofit2.Response
 class AddTangKouViewModel():ViewModel() {
 
 
-    fun addTangKou(){
+    fun addTangKou(code:String,name:String){
             val map = HashMap<String, String>()
-            map["code"] = "789"
-            map["name"] = "乌龟的家"
+            map["code"] = code
+            map["name"] = name
             map["__sid"] = YuJiaBaoApplication.TOKEN
 //            map["__ajax"] = "true"
 

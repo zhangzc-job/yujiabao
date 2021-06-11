@@ -83,4 +83,8 @@ class AddItemView(context: Context, attrs: AttributeSet) : LinearLayout(context,
         }
 
     }
+
+    fun getContent():String{
+        return contentEt.text.toString()
+    }
 }
