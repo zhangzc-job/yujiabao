@@ -14,6 +14,63 @@ import retrofit2.Response
 
 class AddTangKouViewModel():ViewModel() {
 
+    
+
+    fun addDevice(fishId:String,type:String,code:String){
+        val map=HashMap<String,String>()
+        map["fishpondId"]=fishId
+        map["deviceTypeCode"]=type
+        map["code"]=code
+        map["__sid"] = YuJiaBaoApplication.TOKEN
+        RetrofitClient.instance?.api?.saveDeviceInfo(map)?.enqueue(object : Callback<ResponseBody>{
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                val ddd = response.body()?.string();
+                Log.i("dddddddddcccccddddd", ddd + "")
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.i("dddddddddcccccddddd", "失败了")
+            }
+
+        })
+
+    }
+
+    fun deleteDevice(id:String){
+        val map=HashMap<String,String>()
+        map["id"]=id
+        map["__sid"] = YuJiaBaoApplication.TOKEN
+        RetrofitClient.instance?.api?.deleteDeviceInfo(map)?.enqueue(object : Callback<ResponseBody>{
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                val ddd = response.body()?.string();
+                Log.i("dddddddddcccccddddd", ddd + "")
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.i("dddddddddcccccddddd", "失败了")
+            }
+
+        })
+
+    }
+
+    fun findDevice(fishId:String){
+        val map=HashMap<String,String>()
+        map["fishpondId"]=fishId
+        map["__sid"] = YuJiaBaoApplication.TOKEN
+        RetrofitClient.instance?.api?.saveDeviceInfo(map)?.enqueue(object : Callback<ResponseBody>{
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                val ddd = response.body()?.string();
+                Log.i("dddddddddcccccddddd", ddd + "")
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.i("dddddddddcccccddddd", "失败了")
+            }
+
+        })
+    }
+
 
     fun addTangKou(code:String,name:String){
             val map = HashMap<String, String>()

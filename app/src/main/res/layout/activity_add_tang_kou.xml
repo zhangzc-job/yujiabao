@@ -53,6 +53,10 @@
 
         </LinearLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/add_tangkou_rcv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <!--        <com.zzc.chaobaselibrary.view.AddItemView-->
         <!--            android:id="@+id/add_item_3"-->

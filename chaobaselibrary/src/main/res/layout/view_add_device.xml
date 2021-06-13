@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RadioGroup
+        android:id="@+id/add_device_type_rg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -23,8 +25,35 @@
     </RadioGroup>
 
     <EditText
+        android:id="@+id/add_device_input_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="传感器编号" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add_device_cancel_bn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="15dp"
+            android:text="取消" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add_device_add_bn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:background="@color/theme_color"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="15dp"
+            android:text="添加" />
+    </LinearLayout>
 
 </LinearLayout>

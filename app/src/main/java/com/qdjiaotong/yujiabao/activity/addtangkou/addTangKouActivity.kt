@@ -2,6 +2,7 @@ package com.qdjiaotong.yujiabao.activity.addtangkou
 
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.lxj.xpopup.XPopup
 import com.qdjiaotong.yujiabao.R
@@ -21,6 +22,8 @@ class addTangKouActivity : ZBaseActivity() {
 
     lateinit var viewModel: AddTangKouViewModel
 
+    var isEdit=false
+
 
     override fun initView() {
 
@@ -37,6 +40,8 @@ class addTangKouActivity : ZBaseActivity() {
 
         if (item != null) {
             initTitleBar(true, "编辑塘口")
+            isEdit=true
+
         } else {
             initTitleBar(true, "新增塘口")
         }
@@ -62,9 +67,13 @@ class addTangKouActivity : ZBaseActivity() {
 
         cBinding.mbnAddDevice.setOnClickListener {
 
-            "dddddd".showToast(this)
+            AddDeviceDialog.Builder(this)
+                .setClickOKListener(object : AddDeviceDialog.OnAddClickListener {
+                    override fun onClick(type: String, code: String) {
+//                        type + code.showToast(context)
+                    }
 
-            AddDeviceDialog.Builder(this).create()?.show()
+                }).create()?.show()
 //            XPopup.Builder(this).asConfirm(
 //                "添加设备",
 //                null,
