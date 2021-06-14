@@ -55,9 +55,6 @@ class MyTangKouActivity : ZBaseActivity() {
         bindingT.tangKouRv.adapter = adapter
 
         adapter.setOnItemClickListener { adapter, view, position ->
-
-
-
             val item = tangKouList[position]
             val intent = Intent(this, ChartsActivity::class.java)
             intent.putExtra("id", item.fishpondId)
