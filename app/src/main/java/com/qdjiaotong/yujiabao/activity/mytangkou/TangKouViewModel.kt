@@ -70,7 +70,7 @@ class TangKouViewModel : ViewModel() {
                 val typeOf = object : TypeToken<List<TangKouItem>>() {}.type
 
                 var list = gson.fromJson<List<TangKouItem>>(ddd, typeOf)
-                tankous.postValue(arrayListOf())
+//                tankous.postValue(arrayListOf())
                 tankous.postValue(list)
 
             }

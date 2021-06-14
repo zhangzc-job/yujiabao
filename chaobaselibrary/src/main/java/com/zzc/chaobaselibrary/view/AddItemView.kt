@@ -22,6 +22,8 @@ class AddItemView(context: Context, attrs: AttributeSet) : LinearLayout(context,
     lateinit var titleTv: TextView
     lateinit var contentEt: EditText
 
+    var canEdit: Boolean = true
+
     init {
         var view = LayoutInflater.from(context).inflate(R.layout.view_add_item, this)
 
@@ -84,7 +86,17 @@ class AddItemView(context: Context, attrs: AttributeSet) : LinearLayout(context,
 
     }
 
-    fun getContent():String{
+    fun getContent(): String {
         return contentEt.text.toString()
+    }
+
+    fun setContent(content: String) {
+        contentEt.setText(content)
+    }
+
+    fun setCanChange(boolean: Boolean){
+        if(!boolean){
+            contentEt.isFocusable = false
+        }
     }
 }

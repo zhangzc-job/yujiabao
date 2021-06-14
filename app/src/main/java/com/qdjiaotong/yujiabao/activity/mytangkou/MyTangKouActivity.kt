@@ -34,7 +34,7 @@ class MyTangKouActivity : ZBaseActivity() {
     override fun initListener() {
 
         bindingT.addTangKou.setOnClickListener {
-            startActivity(Intent(this, addTangKouActivity::class.java))
+            startActivityForResult(Intent(this, addTangKouActivity::class.java),100)
         }
 
 
@@ -55,10 +55,14 @@ class MyTangKouActivity : ZBaseActivity() {
         bindingT.tangKouRv.adapter = adapter
 
         adapter.setOnItemClickListener { adapter, view, position ->
+
+
+
             val item = tangKouList[position]
             val intent = Intent(this, ChartsActivity::class.java)
             intent.putExtra("id", item.fishpondId)
             startActivity(intent)
+//            startActivityForResult(intent,100)
         }
         adapter.addChildClickViewIds(R.id.tkEditBn)
         adapter.addChildClickViewIds(R.id.tkDeleteBn)
@@ -70,7 +74,7 @@ class MyTangKouActivity : ZBaseActivity() {
                     val intent = Intent(this, addTangKouActivity::class.java)
                     intent.putExtra("tt", "mmmmmmm")
                     intent.putExtra("data",tangKouList[position])
-                    startActivity(intent)
+                    startActivityForResult(intent,100)
                 }
                 R.id.tkDeleteBn -> {
                     XPopup.Builder(this).asConfirm("提示","确定删除吗？",object : OnConfirmListener{
@@ -100,6 +104,7 @@ class MyTangKouActivity : ZBaseActivity() {
                 showEmptyView("没有数据")
             } else {
                 showContentView()
+                tangKouList.clear()
                 tangKouList.addAll(it)
                 adapter.notifyDataSetChanged()
             }
@@ -108,6 +113,16 @@ class MyTangKouActivity : ZBaseActivity() {
 
         viewModel.getListItems()
     }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Log.i("ddddddddddddddddddd","结果")
+        if(requestCode==100){
+            viewModel.getListItems()
+        }
+    }
+
 
 
 }

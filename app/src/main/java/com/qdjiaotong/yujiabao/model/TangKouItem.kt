@@ -25,12 +25,12 @@ data class YjhFishpond(
     val isNewRecord: Boolean,
     val name: String,
     val oxygenUnit: String,
-    val oxygenVal: Int,
+    val oxygenVal: Double,
     val remarks: String,
     val sort: Int,
     val status: String,
     val temperatureUnit: String,
-    val temperatureVal: Int,
+    val temperatureVal: Double,
     val updateBy: String,
     val updateDate: String
 )

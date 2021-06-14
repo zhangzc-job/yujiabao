@@ -1,17 +1,25 @@
 package com.qdjiaotong.yujiabao.activity.addtangkou
 
+import android.app.SearchManager
 import android.util.Log
 import android.view.View
-import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.lxj.xpopup.XPopup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import com.qdjiaotong.yujiabao.R
 import com.qdjiaotong.yujiabao.YuJiaBaoApplication.Companion.context
+import com.qdjiaotong.yujiabao.activity.mytangkou.TangKouAdapter
 import com.qdjiaotong.yujiabao.databinding.ActivityAddTangKouBinding
+import com.qdjiaotong.yujiabao.model.DeviceItem
 import com.qdjiaotong.yujiabao.model.TangKouItem
 import com.zzc.chaobaselibrary.base.ZBaseActivity
 import com.zzc.chaobaselibrary.kotlinding.showToast
 import com.zzc.chaobaselibrary.view.AddDeviceDialog
+import com.lxj.xpopup.XPopup
+import com.lxj.xpopup.interfaces.OnCancelListener
+import com.lxj.xpopup.interfaces.OnConfirmListener
 
 
 class addTangKouActivity : ZBaseActivity() {
@@ -22,7 +30,11 @@ class addTangKouActivity : ZBaseActivity() {
 
     lateinit var viewModel: AddTangKouViewModel
 
-    var isEdit=false
+    var isEdit = false
+
+    var item:TangKouItem?=null
+
+    var deviceItems=ArrayList<DeviceItem>()
 
 
     override fun initView() {
@@ -31,7 +43,7 @@ class addTangKouActivity : ZBaseActivity() {
 
         viewModel = ViewModelProvider(this).get(AddTangKouViewModel::class.java)
 
-        val item = intent.getSerializableExtra("data") as? TangKouItem
+        item= intent.getSerializableExtra("data") as? TangKouItem
         var tt = intent.getStringExtra("tt")
         Log.i("ddddddd", item.toString())
         if (tt != null) {
@@ -40,11 +52,68 @@ class addTangKouActivity : ZBaseActivity() {
 
         if (item != null) {
             initTitleBar(true, "编辑塘口")
-            isEdit=true
+            isEdit = true
+            cBinding.addItem1.setContent(item!!.yjhFishpond.name)
+            cBinding.addItem2.setContent(item!!.yjhFishpond.code)
+            cBinding.addItem2.setCanChange(false)
+            viewModel.findDevice(item!!.yjhFishpond.id)
+
 
         } else {
             initTitleBar(true, "新增塘口")
         }
+
+
+        val layoutManager=LinearLayoutManager(this)
+        cBinding.addTangkouRcv.layoutManager=layoutManager
+        val adapter=DeviceAdapter(deviceItems)
+        cBinding.addTangkouRcv.adapter=adapter
+
+        adapter.addChildClickViewIds(R.id.device_delete_bn)
+
+        adapter.setOnItemChildClickListener { adapter, view, position ->
+            XPopup.Builder(this).asConfirm("提示","确定删除该设备吗？",object : OnConfirmListener{
+                override fun onConfirm() {
+                    viewModel.deleteDevice(deviceItems[position].id)
+                }
+
+            },object : OnCancelListener {
+                override fun onCancel() {
+                    "cancel".showToast(context)
+                }
+
+            }).show()
+        }
+
+        viewModel.addTangKouStatus.observe(this, Observer {
+            setResult(100,intent)
+            finish()
+        })
+
+        viewModel.deleteDeviceStatus.observe(this, Observer{
+            if(item!=null) {
+                item?.yjhFishpond?.id?.let { it1 -> viewModel.findDevice(it1) }
+            }
+        })
+
+        viewModel.addDeviceStatus.observe(this, Observer{
+            if(item!=null) {
+                item?.yjhFishpond?.id?.let { it1 -> viewModel.findDevice(it1) }
+            }
+        })
+
+        viewModel.devices.observe(this, Observer {
+            if (it.isEmpty()) {
+                "暂无数据".showToast(this)
+                deviceItems.clear()
+                adapter.notifyDataSetChanged()
+            } else {
+                showContentView()
+                deviceItems.clear()
+                deviceItems.addAll(it)
+                adapter.notifyDataSetChanged()
+            }
+        })
 
     }
 
@@ -61,7 +130,11 @@ class addTangKouActivity : ZBaseActivity() {
             if (name == null || code == null) {
                 "请输入有效内容".showToast(this)
             } else {
-                viewModel.addTangKou(code, name)
+                if(isEdit){
+                    viewModel.updateUserFishpond(item!!.fishpondId,name)
+                }else {
+                    viewModel.addTangKou(code, name)
+                }
             }
         }
 
@@ -70,20 +143,18 @@ class addTangKouActivity : ZBaseActivity() {
             AddDeviceDialog.Builder(this)
                 .setClickOKListener(object : AddDeviceDialog.OnAddClickListener {
                     override fun onClick(type: String, code: String) {
-//                        type + code.showToast(context)
+
+                        item?.yjhFishpond?.id?.let { it1 -> viewModel.addDevice(it1,type,code) }
+
+
                     }
 
                 }).create()?.show()
-//            XPopup.Builder(this).asConfirm(
-//                "添加设备",
-//                null,
-//                "取消",
-//                "添加",
-//                { "确定按钮".showToast(context) },
-//                { "取消按钮".showToast(context) },
-//                false,
-//                R.layout.view_add_device
-//            ).show()
+
+
+            if(item!=null) {
+                item?.yjhFishpond?.id?.let { it1 -> viewModel.findDevice(it1) }
+            }
         }
     }
 }
