@@ -11,7 +11,7 @@
         android:layout_height="44dp"
         android:background="@color/theme_color"
         android:gravity="center"
-        android:text="渔家宝"
+        android:text="水未来"
         android:textColor="#fff"
         android:textSize="20sp" />
 

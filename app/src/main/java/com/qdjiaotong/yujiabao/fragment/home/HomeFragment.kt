@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.qdjiaotong.yujiabao.activity.mytangkou.MyTangKouActivity
+import com.qdjiaotong.yujiabao.activity.tangkoulist.TangKouListActivity
 import com.qdjiaotong.yujiabao.activity.web_activity.webview.WebViewActivity
 import com.qdjiaotong.yujiabao.databinding.FragmentHomeBinding
 import com.youth.banner.indicator.CircleIndicator
@@ -80,7 +81,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             binding.homeJiance -> startActivity(
                 Intent(
                     activity,
-                    WebViewActivity::class.java
+                    TangKouListActivity::class.java
                 )
             )
             binding.homeShengchan -> startActivity(

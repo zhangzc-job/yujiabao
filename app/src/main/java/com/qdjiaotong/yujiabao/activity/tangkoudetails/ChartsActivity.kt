@@ -120,24 +120,31 @@ class ChartsActivity : ZBaseActivity() {
         rightAxis.setDrawZeroLine(false)
         rightAxis.isGranularityEnabled = false
 
-        setData(5, 30.toFloat(), d1, d2,item.legend)
+        setData(5, 30.toFloat(), d1, d2, item.legend)
 //        chart.invalidate()
 
     }
 
-    private fun setData(count: Int, range: Float, d1: List<Float>, d2: List<Float>,index:List<String>) {
+    private fun setData(
+        count: Int,
+        range: Float,
+        d1: List<Float>,
+        d2: List<Float>,
+        index: List<String>
+    ) {
         val values1 = ArrayList<Entry>()
 //        for (i in 0 until count) {
         for (i in d1.indices) {
 //            val `val` = (Math.random() * (range / 2f)).toFloat() + 50
-            val `val` = d1[i] + 50 + Math.random()*10
+//            val `val` = d1[i] + 50 + Math.random()*10
+            val `val` = d1[i]
             values1.add(Entry(i.toFloat(), `val`.toFloat()))
         }
         val values2 = ArrayList<Entry>()
 //        for (i in 0 until count) {
         for (i in d2.indices) {
 //            val `val` = (Math.random() * range).toFloat() + 10
-            val `val` = d2[i] + 10
+            val `val` = d2[i]
             values2.add(Entry(i.toFloat(), `val`))
         }
 //        val values3 = ArrayList<Entry>()

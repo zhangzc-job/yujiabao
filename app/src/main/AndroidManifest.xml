@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.qdjiaotong.yujiabao">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,6 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YuJiaBao">
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <activity android:name=".activity.tangkoulist.TangKouListActivity" />
         <activity android:name=".activity.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +32,7 @@
         </activity>
         <activity android:name=".activity.addtangkou.addTangKouActivity" />
         <activity android:name=".activity.tangkoudetails.ChartsActivity" />
-        <activity android:name=".activity.login.ui.LoginActivity">
-        </activity>
+        <activity android:name=".activity.login.ui.LoginActivity" />
         <activity android:name=".activity.web_activity.webview.WebViewActivity" />
         <activity android:name=".activity.mytangkou.MyTangKouActivity" />
         <activity android:name=".MainActivity" /> <!-- 适配华为（huawei）刘海屏 -->
