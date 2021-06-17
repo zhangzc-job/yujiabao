@@ -1,12 +1,14 @@
 package com.qdjiaotong.yujiabao.model
 
+import java.io.Serializable
+
 data class UserTo(
     val __url: String,
     val message: String,
     val result: String,
     val sessionid: String,
     val user: User
-)
+):Serializable{}
 
 data class User(
     val avatarUrl: String,
@@ -37,7 +39,7 @@ data class User(
     val userName: String,
     val userType: String,
     val userWeight: Int
-)
+):Serializable{}
 
 data class Extend(
     val extendS1: String,
@@ -48,7 +50,7 @@ data class Extend(
     val extendS6: String,
     val extendS7: String,
     val extendS8: String
-)
+):Serializable{}
 
 data class RefObj(
     val company: Company,
@@ -67,7 +69,7 @@ data class RefObj(
     val status: String,
     val updateBy: String,
     val updateDate: String
-)
+):Serializable{}
 
 data class Company(
     val companyCode: String,
@@ -76,7 +78,7 @@ data class Company(
     val isNewRecord: Boolean,
     val isRoot: Boolean,
     val isTreeLeaf: Boolean
-)
+):Serializable{}
 
 data class Office(
     val address: String,
@@ -107,7 +109,7 @@ data class Office(
     val updateDate: String,
     val viewCode: String,
     val zipCode: String
-)
+):Serializable{}
 
 data class ExtendX(
     val extendS1: String,
@@ -118,4 +120,4 @@ data class ExtendX(
     val extendS6: String,
     val extendS7: String,
     val extendS8: String
-)
+):Serializable{}
