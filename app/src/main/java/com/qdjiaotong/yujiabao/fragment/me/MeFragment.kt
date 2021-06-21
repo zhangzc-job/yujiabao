@@ -30,7 +30,6 @@ class MeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.meHomeCiv.setOnClickListener {
-            "ddddd".showToast(YuJiaBaoApplication.context,Toast.LENGTH_SHORT)
             PictureSelector.create(this,PictureSelector.SELECT_REQUEST_CODE).selectPicture(true,200,200,1,1)
         }
     }

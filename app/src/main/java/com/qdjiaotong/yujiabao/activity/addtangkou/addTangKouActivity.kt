@@ -1,25 +1,20 @@
 package com.qdjiaotong.yujiabao.activity.addtangkou
 
-import android.app.SearchManager
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.listener.OnItemChildClickListener
+import com.lxj.xpopup.XPopup
+import com.lxj.xpopup.interfaces.OnCancelListener
+import com.lxj.xpopup.interfaces.OnConfirmListener
 import com.qdjiaotong.yujiabao.R
-import com.qdjiaotong.yujiabao.YuJiaBaoApplication.Companion.context
-import com.qdjiaotong.yujiabao.activity.mytangkou.TangKouAdapter
 import com.qdjiaotong.yujiabao.databinding.ActivityAddTangKouBinding
 import com.qdjiaotong.yujiabao.model.DeviceItem
 import com.qdjiaotong.yujiabao.model.TangKouItem
 import com.zzc.chaobaselibrary.base.ZBaseActivity
 import com.zzc.chaobaselibrary.kotlinding.showToast
 import com.zzc.chaobaselibrary.view.AddDeviceDialog
-import com.lxj.xpopup.XPopup
-import com.lxj.xpopup.interfaces.OnCancelListener
-import com.lxj.xpopup.interfaces.OnConfirmListener
 
 
 class addTangKouActivity : ZBaseActivity() {
@@ -32,9 +27,9 @@ class addTangKouActivity : ZBaseActivity() {
 
     var isEdit = false
 
-    var item:TangKouItem?=null
+    var item: TangKouItem? = null
 
-    var deviceItems=ArrayList<DeviceItem>()
+    var deviceItems = ArrayList<DeviceItem>()
 
 
     override fun initView() {
@@ -43,7 +38,7 @@ class addTangKouActivity : ZBaseActivity() {
 
         viewModel = ViewModelProvider(this).get(AddTangKouViewModel::class.java)
 
-        item= intent.getSerializableExtra("data") as? TangKouItem
+        item = intent.getSerializableExtra("data") as? TangKouItem
         var tt = intent.getStringExtra("tt")
         Log.i("ddddddd", item.toString())
         if (tt != null) {
@@ -64,40 +59,40 @@ class addTangKouActivity : ZBaseActivity() {
         }
 
 
-        val layoutManager=LinearLayoutManager(this)
-        cBinding.addTangkouRcv.layoutManager=layoutManager
-        val adapter=DeviceAdapter(deviceItems)
-        cBinding.addTangkouRcv.adapter=adapter
+        val layoutManager = LinearLayoutManager(this)
+        cBinding.addTangkouRcv.layoutManager = layoutManager
+        val adapter = DeviceAdapter(deviceItems)
+        cBinding.addTangkouRcv.adapter = adapter
 
         adapter.addChildClickViewIds(R.id.device_delete_bn)
 
         adapter.setOnItemChildClickListener { adapter, view, position ->
-            XPopup.Builder(this).asConfirm("提示","确定删除该设备吗？",object : OnConfirmListener{
+            XPopup.Builder(this).asConfirm("提示", "确定删除该设备吗？", object : OnConfirmListener {
                 override fun onConfirm() {
                     viewModel.deleteDevice(deviceItems[position].id)
                 }
 
-            },object : OnCancelListener {
+            }, object : OnCancelListener {
                 override fun onCancel() {
-                    "cancel".showToast(context)
+                    "cancel".showToast(this@addTangKouActivity)
                 }
 
             }).show()
         }
 
         viewModel.addTangKouStatus.observe(this, Observer {
-            setResult(100,intent)
+            setResult(100, intent)
             finish()
         })
 
-        viewModel.deleteDeviceStatus.observe(this, Observer{
-            if(item!=null) {
+        viewModel.deleteDeviceStatus.observe(this, Observer {
+            if (item != null) {
                 item?.yjhFishpond?.id?.let { it1 -> viewModel.findDevice(it1) }
             }
         })
 
-        viewModel.addDeviceStatus.observe(this, Observer{
-            if(item!=null) {
+        viewModel.addDeviceStatus.observe(this, Observer {
+            if (item != null) {
                 item?.yjhFishpond?.id?.let { it1 -> viewModel.findDevice(it1) }
             }
         })
@@ -130,9 +125,9 @@ class addTangKouActivity : ZBaseActivity() {
             if (name == null || code == null) {
                 "请输入有效内容".showToast(this)
             } else {
-                if(isEdit){
-                    viewModel.updateUserFishpond(item!!.fishpondId,name)
-                }else {
+                if (isEdit) {
+                    viewModel.updateUserFishpond(item!!.fishpondId, name)
+                } else {
                     viewModel.addTangKou(code, name)
                 }
             }
@@ -144,7 +139,7 @@ class addTangKouActivity : ZBaseActivity() {
                 .setClickOKListener(object : AddDeviceDialog.OnAddClickListener {
                     override fun onClick(type: String, code: String) {
 
-                        item?.yjhFishpond?.id?.let { it1 -> viewModel.addDevice(it1,type,code) }
+                        item?.yjhFishpond?.id?.let { it1 -> viewModel.addDevice(it1, type, code) }
 
 
                     }
@@ -152,7 +147,7 @@ class addTangKouActivity : ZBaseActivity() {
                 }).create()?.show()
 
 
-            if(item!=null) {
+            if (item != null) {
                 item?.yjhFishpond?.id?.let { it1 -> viewModel.findDevice(it1) }
             }
         }

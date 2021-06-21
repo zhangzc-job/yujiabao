@@ -1,18 +1,16 @@
 package com.qdjiaotong.yujiabao.activity.addtangkou
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.qdjiaotong.yujiabao.YuJiaBaoApplication
-import com.qdjiaotong.yujiabao.YuJiaBaoApplication.Companion.context
 import com.qdjiaotong.yujiabao.api.RetrofitClient
 import com.qdjiaotong.yujiabao.model.DeviceItem
-import com.qdjiaotong.yujiabao.model.TangKouItem
 import com.qdjiaotong.yujiabao.model.UserTo
 import com.zzc.chaobaselibrary.kotlinding.showToast
+import com.zzc.chaobaselibrary.utils.ZUtils
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
@@ -29,7 +27,7 @@ class AddTangKouViewModel() : ViewModel() {
 
     val deleteDeviceStatus = MutableLiveData<Boolean>()
 
-    val addTangKouStatus= MutableLiveData<Boolean>()
+    val addTangKouStatus = MutableLiveData<Boolean>()
 
     fun addDevice(fishId: String, type: String, code: String) {
         val map = HashMap<String, String>()
@@ -43,7 +41,7 @@ class AddTangKouViewModel() : ViewModel() {
                 Log.i("dddddddddcccccddddd", ddd + "")
                 val jb = JSONObject(ddd)
                 if (code == jb.getString("code")) {
-                    "添加成功".showToast(context)
+                    "添加成功".showToast(ZUtils.getApp())
                     addDeviceStatus.postValue(true)
                 }
 
@@ -102,7 +100,7 @@ class AddTangKouViewModel() : ViewModel() {
         })
     }
 
-    fun updateUserFishpond(id: String, name: String){
+    fun updateUserFishpond(id: String, name: String) {
         val map = HashMap<String, String>()
         map["id"] = id
         map["name"] = name

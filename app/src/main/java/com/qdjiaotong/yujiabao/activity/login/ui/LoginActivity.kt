@@ -45,7 +45,7 @@ class LoginActivity : ZBaseActivity() {
                     kv.encode("username", username)
                     kv.encode("password", password)
                 }
-                userData.message.showToast(YuJiaBaoApplication.context)
+                userData.message.showToast(this)
                 YuJiaBaoApplication.TOKEN = userData.sessionid
                 startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 finish()
