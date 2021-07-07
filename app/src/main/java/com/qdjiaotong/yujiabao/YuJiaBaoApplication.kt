@@ -3,6 +3,7 @@ package com.qdjiaotong.yujiabao
 import android.app.Application
 import com.tencent.mmkv.MMKV
 import com.zzc.chaobaselibrary.kotlinding.showToast
+import com.zzc.chaobaselibrary.utils.LogUtil
 import com.zzc.chaobaselibrary.utils.ZUtils
 
 class YuJiaBaoApplication : Application() {
@@ -25,6 +26,7 @@ class YuJiaBaoApplication : Application() {
 
     private fun initZUtils() {
         ZUtils.init(this)
+        LogUtil.setIsLog(isDebugMode)
     }
 
 }

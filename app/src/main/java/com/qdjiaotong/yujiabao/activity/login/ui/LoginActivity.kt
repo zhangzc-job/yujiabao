@@ -12,6 +12,7 @@ import com.tencent.mmkv.MMKV
 import com.zzc.chaobaselibrary.base.ZBaseActivity
 import com.zzc.chaobaselibrary.kotlinding.showToast
 import com.zzc.chaobaselibrary.utils.Base64Utils
+import com.zzc.chaobaselibrary.utils.LogUtil
 
 class LoginActivity : ZBaseActivity() {
 
@@ -71,6 +72,9 @@ class LoginActivity : ZBaseActivity() {
         cBinding.login.setOnClickListener {
 
             showLoadingDialog()
+
+            LogUtil.d("ddddddddddddddddddddddddddddddddddddddddd")
+
             username = cBinding.username.text.toString()
             password = cBinding.password.text.toString()
 

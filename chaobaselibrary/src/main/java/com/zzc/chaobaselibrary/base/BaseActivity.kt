@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import com.zzc.chaobaselibrary.utils.ToastUtils
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
@@ -17,7 +18,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
         setContentView(mBinding.root)
 
-        requestedOrientation=ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT  //竖屏
 
         initialize()
     }
@@ -26,4 +27,9 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     abstract fun getViewBinding(): VB
 
     open fun initialize() {}
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ToastUtils.release()
+    }
 }
